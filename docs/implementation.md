@@ -1,16 +1,3 @@
-## **Visão Geral**
-O **dotnet-logging-app-plugin** adiciona em uma stack a capacidade de padronizar a escrita de logs, reduzindo a verbosidade de códigos, proporcionando celeridade e observações mais precisas.
-
-## **Uso**
-
-### **Pré-requisitos**
-Para utilizar este plugin é necessário ter uma Stack DotNET criada pelo `CLI` do `StackSpot` que você pode baixar [**aqui**](https://stackspot.com/).
-
-Também ter instalado:  
-- .NET 5 ou 6 
-- O template **`dotnet-api-template`** ou o **`dotnet-worker-template`** deverão estar aplicados para que seja possível usar este plugin.
-
-## **Configuração**
 #### **Inputs**
 
 Os inputs necessários para utilizar o plugin são:
@@ -175,6 +162,3 @@ Confira o output completo preenchido com informações de DotNET.
     }
 }
 ```
-
-### **Implementação**
-- [**Nuget**](https://www.nuget.org/packages/StackSpot.Logging/)
