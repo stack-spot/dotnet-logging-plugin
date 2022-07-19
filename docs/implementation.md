@@ -1,11 +1,12 @@
-#### **Inputs**
+### **Inputs configurados automaticamente**  
 
-Os inputs necessários para utilizar o plugin são:
+O input abaixo é usado para configurar o plugin:  
+
 | **Campo** | **Valor** | **Descrição** |
 | :--- | :--- | :--- |
-| Log Level| Padrão: "INFO" | level de log, valores: DEBUG, INFO, WARN, ERROR, FATAL. |
+| Log Level| Padrão: "INFO" | Level de log que tem os valores: DEBUG, INFO, WARN, ERROR, FATAL. |
 
-Você pode configurar as variáveis no arquivo **`appsettings.json`**.
+- As variáveis serão configuradas no arquivo **`appsettings.json`**. Confira o exemplo abaixo:  
 
 ```json
 {
@@ -15,7 +16,7 @@ Você pode configurar as variáveis no arquivo **`appsettings.json`**.
   }
 }
 ```
-Quando o plugin for executado na máquina local, é possível configurar as variáveis de ambientes no arquivo **`launchSettings.json`**.
+- Quando o plugin for executado na máquina local, as variáveis de ambientes serão configuradas no arquivo **`launchSettings.json`**. Confira o exemplo abaixo:  
 
 ```json
 {
@@ -35,24 +36,24 @@ Quando o plugin for executado na máquina local, é possível configurar as vari
   }
 }
 ```
-#### **Configurações**
-Adicione ao seu **`IServiceCollection`**, via `services.AddLogger()`, no `Startup` da aplicação ou `Program`, as seguintes configurações: 
 
-Utilizando váriavel de ambiente:  
+- As configurações abaixo serão feitas no **`IServiceCollection`**, através do `services.AddLogger()`, no `Startup` da aplicação ou `Program`.
+
+**Utilizando váriavel de ambiente**:  
 
 ```csharp
 services.AddLogger();
 ```
 
-Utilizando `appsettings.json`: 
+**Utilizando o `appsettings.json`**: 
 
 ```csharp
 services.AddLogger(Configuration);
 ```
+#### **Instalação de pacotes adicionais**  
+Caso precise de um log completo com informações de contexto, é possível instalar os pacotes adicionais e utilizar a configuração abaixo:
 
-Caso precise de um log completo com informações de contexto, instale os pacotes adicionais e utilize a configuração abaixo:
-
-Exemplo OpenTracing:
+**Exemplo OpenTracing**:
 
 ```csharp
 services.AddLogger()
@@ -60,7 +61,7 @@ services.AddLogger()
         .WithCorrelation();
 ```
 
-Exemplo XRay:
+**Exemplo XRay**:
 
 ```csharp
 services.AddLogger()
@@ -68,7 +69,8 @@ services.AddLogger()
         .WithCorrelation();
 ```
 
-Estendemos os métodos do `ILogger<>` transformando o output, adicionalmente estão sendo providas duas novas sobrecargas para suportar TAGs e log de Objetos no campo Data. Confira abaixo:  
+#### **Exemplos de utilização do plugin**  
+Os métodos do `ILogger<>` foram estendidos, transformando o output. Além disso, duas novas sobrecargas estão sendo providas para suportar **TAGs** e **log de Objetos** no campo **Data**. Confira o exemplo abaixo:  
 
 ```csharp
 [ApiController]
@@ -91,10 +93,7 @@ public class SampleController : ControllerBase
     }
 }
 ```
-
-#### Sobrecargas disponíveis
-
-Debug
+- **Debug**  
 
 ```csharp
 _logger.LogDebug("My DEBUG Log Message");
@@ -102,7 +101,7 @@ _logger.LogDebug("My DEBUG Log Message", "Tag01", "Tag02");
 _logger.LogDebug("My DEBUG Log Message", someEntity, "Tag01", "Tag02");
 ```
 
-Info
+- **Info**  
 
 ```csharp
 _logger.LogInformation("My INFO Log Message");
@@ -110,7 +109,7 @@ _logger.LogInformation("My INFO Log Message", "Tag01", "Tag02");
 _logger.LogInformation("My INFO Log Message", someEntity, "Tag01", "Tag02");
 ```
 
-Warning
+- **Warning**
 
 ```csharp
 _logger.LogWarning("My WARNING Log Message");
@@ -118,7 +117,7 @@ _logger.LogWarning("My WARNING Log Message", "Tag01", "Tag02");
 _logger.LogWarning("My WARNING Log Message", someEntity, "Tag01", "Tag02");
 ```
 
-Error
+- **Error**  
 
 ```csharp
 _logger.LogError("My ERROR Log Message");
@@ -126,7 +125,7 @@ _logger.LogError("My ERROR Log Message", "Tag01", "Tag02");
 _logger.LogError("My ERROR Log Message", someEntity, "Tag01", "Tag02");
 ```
 
-Fatal
+- **Fatal**  
 
 ```csharp
 _logger.LogFatal("My ERROR Log Message");
@@ -134,9 +133,9 @@ _logger.LogFatal("My ERROR Log Message", "Tag01", "Tag02");
 _logger.LogFatal("My ERROR Log Message", someEntity, "Tag01", "Tag02");
 ```
 
-#### Output completo
+#### Exemplo de Output completo
 
-Confira o output completo preenchido com informações de DotNET.
+Confira abaixo o output completo preenchido com as informações de DotNET:  
 
 ```json
 {
